@@ -6,8 +6,9 @@ import { useForm } from "react-hook-form";
 import { PrimaryButton } from "./PrimaryButton";
 import s from './Registration.module.scss';
 //import { useHistory } from "react-router-dom"; //это если несколько этапов => мне пока не надо
-import * as axios from "axios";
+//import * as axios from "axios";
 //import axios from "axios";
+import axios from 'axios';
 
 export const Step1 = () => {
 
@@ -18,7 +19,7 @@ export const Step1 = () => {
     })
         
     const onSubmit = (data) => {
-        /* axios.post('https://nauchki.herokuapp.com/registration',{
+        axios.post('https://nauchki.herokuapp.com/registration',{
             Email: data.Email,
             login: data.login,
             number: data.number,
@@ -27,7 +28,7 @@ export const Step1 = () => {
         })
         .then(function (response) {
             console.log(response);
-        }) */
+        })
         console.log(data)
     }
 
