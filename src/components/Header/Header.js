@@ -19,7 +19,7 @@ export const Header = () => {
                 </div>
                 <div>
                     <ul className={s.header__iconsmenu}>
-                        <li className={s.header__iconsmenu_item}><NavLink to="/login" className={s.header__iconsmenu_btn}>Регистрация</NavLink></li>
+                        <li className={s.header__iconsmenu_item}><NavLink to="/registration" className={s.header__iconsmenu_btn}>Регистрация</NavLink></li>
                         <li className={s.header__iconsmenu_item}><NavLink to="/"><AiOutlineHome className={s.sizy}/></NavLink></li>
                         <li className={s.header__iconsmenu_item}><NavLink to="/"><FaRegUserCircle className={s.sizy}/></NavLink></li>
                     </ul>
