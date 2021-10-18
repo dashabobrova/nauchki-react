@@ -19,22 +19,27 @@ export const Step1 = () => {
     })
         
     const onSubmit = (data) => {
-        axios.post('https://nauchki.herokuapp.com/registration',{
-            Email: data.Email,
-            login: data.login,
-            number: data.number,
-            password: data.password,
-            secretAnswer: data.secretAnswer
-        })
+        axios.post('https://nauchki.herokuapp.com/registration',
+            {
+                Email: data.Email,
+                login: data.login,
+                number: data.number,
+                password: data.password,
+                secretAnswer: data.secretAnswer
+            },
+            {
+                withCredentials: true
+            }
+        )
         .then(function (response) {
             console.log(response);
         })
-        console.log(data)
+        console.log(data);
+        alert('Успех!')
     }
 
     return (
         <MainContainer>
-            <div></div>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Input 
                     {...register("login", { required: true })} 
