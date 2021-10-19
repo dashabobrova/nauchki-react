@@ -21,7 +21,7 @@ export const Header = () => {
                     <ul className={s.header__iconsmenu}>
                         <li className={s.header__iconsmenu_item}><NavLink to="/registration" className={s.header__iconsmenu_btn}>Регистрация</NavLink></li>
                         <li className={s.header__iconsmenu_item}><NavLink to="/"><AiOutlineHome className={s.sizy}/></NavLink></li>
-                        <li className={s.header__iconsmenu_item}><NavLink to="/"><FaRegUserCircle className={s.sizy}/></NavLink></li>
+                        <li className={s.header__iconsmenu_item}><NavLink to="/personalArea"><FaRegUserCircle className={s.sizy}/></NavLink></li>
                     </ul>
                 </div> 
             </div>

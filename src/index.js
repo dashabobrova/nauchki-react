@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-/* import { DataProvider } from './pages/Registration/DataContext'; */
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <DataProvider> */}
+      <Provider store={store}>
         <App />
-      {/* </DataProvider> */}
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
