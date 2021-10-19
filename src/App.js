@@ -5,7 +5,7 @@ import { Router } from "./Router";
 
 function App() {
  /*  useEffect(()=>{
-    axios.get('https://nauchki.herokuapp.com/user/2')
+    axios.post('https://nauchki.herokuapp.com/login?username=dasha&password=dasha')
     .then(data=>console.log(data))
   }, []); */
 
