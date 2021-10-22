@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import s from './PersonalArea.module.scss';
-
 export const PersonalArea = () => {
     const user = useSelector(state => state.user.userData);
     console.log(user);
