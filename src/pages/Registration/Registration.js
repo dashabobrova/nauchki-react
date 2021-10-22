@@ -26,9 +26,9 @@ const schema = yup.object({
     number: yup
         .string()
         .matches(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/, 'Номер телефона должен быть валидным'),
-    Email: yup
+    email: yup
         .string()
-        .matches(/.+@.+\..+/i, 'Email должен содержать @') // проверять будем отправкой письма на почту (Раиль)
+        .matches(/.+@.+\..+/i, 'email должен содержать @') // проверять будем отправкой письма на почту (Раиль)
   })
   
 
@@ -43,7 +43,7 @@ export const Registration = () => {
     const onSubmit = (data) => {
         axios.post('https://nauchki.herokuapp.com/registration',
             {
-                Email: data.Email,
+                email: data.email,
                 login: data.login,
                 number: data.number,
                 password: data.password,
@@ -116,14 +116,14 @@ export const Registration = () => {
                     />
 
                     <Input 
-                        {...register('Email')} 
-                        id="Email" 
+                        {...register('email')} 
+                        id="email" 
                         type="text" 
-                        label="Email" 
-                        name="Email"
+                        label="email" 
+                        name="email"
                         autoComplete="on"
-                        error={!!errors.Email}
-                        helperText={errors?.Email?.message}
+                        error={!!errors.email}
+                        helperText={errors?.email?.message}
                     />
                     <PrimaryButton>Отправить</PrimaryButton>
                     <NavLink className={s.routerLinkAuth} to="/login">Вход</NavLink>

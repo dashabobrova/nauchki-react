@@ -1,6 +1,6 @@
 import { Input } from "../../UI/Input";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Form } from "../../UI/Form";
 import { MainContainer } from "../../UI/MainContainer";
@@ -33,25 +33,23 @@ export const LogIn = () => {
         resolver: yupResolver(schema)
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         const dataForm = new FormData();
         dataForm.append('username', data.username);
         dataForm.append('password', data.password);
 
-        axios.post('https://nauchki.herokuapp.com/login', 
+        await axios.post('https://nauchki.herokuapp.com/login', 
             dataForm, 
             {
-                withCredentials: true
+                withCredentials: true,
             }
-        )
+        ) 
        
-        axios.post('https://nauchki.herokuapp.com/user', 
-            {
-                login: data.username,
-                password: data.password
-            }, 
-            {withCredentials: true}
-        )
+        await axios.get('https://nauchki.herokuapp.com/getuser',
+        {
+            withCredentials: true
+        }
+        ) 
         .then(res => {
             getUser(res.data);
             history.push("/personalArea"); 
@@ -66,6 +64,8 @@ export const LogIn = () => {
             } 
         })
     }
+
+    
     
     return (
         <LogDataProvider>
