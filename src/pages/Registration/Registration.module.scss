@@ -1,15 +1,20 @@
-._wrapper{
-    max-width: 1440px;
+._wrapper {
+  max-width: 1440px;
 }
 
 .formBlock {
-    margin-top: 94px;
-    width: 538px;
-    height: 544px;
+  margin-top: 94px;
+  width: 538px;
+  height: 544px;
 }
 
 .routerLinkAuth {
-    padding-left: 50px;
-    text-decoration: underline;
-    color: red;
+  padding-left: 50px;
+  text-decoration: underline;
+  color: red;
+}
+
+.errorText {
+  color: red;
+  text-align: center;
 }
