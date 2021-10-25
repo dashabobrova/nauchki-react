@@ -1,23 +1,32 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import s from './PersonalArea.module.scss';
+import s from "./PersonalArea.module.scss";
+import { useDispatch } from "react-redux";
+import { toggleAuthAC } from "../../store/userReducer";
+import { useHistory } from "react-router";
+
 export const PersonalArea = () => {
-    const user = useSelector(state => state.user.userData);
-    console.log(user);
+  const user = useSelector((state) => state.user.userData);
 
-    return (
-        <div className={s._wrapper}> 
-        <h1>PersonalArea</h1>
+  const dispatch = useDispatch();
+  let history = useHistory();
 
-        <div>{user.email}</div>
-        <div>{user.id}</div>
-        <div>{user.login}</div>
-        <div>{user.name}</div>
-        <div>{user.number}</div>
-        <div>{user.password}</div>
-        <div>{user.secretAnswer === null ? 'нет' : user.secretAnswer}</div>
-        <div>{user.secretQuestion === null ? 'нет' : user.secretQuestion}</div>
+  const exitHandler = () => {
+    dispatch(toggleAuthAC(false));
+    history.push("/");
+  };
 
-        </div>
-    )
-}
+  return (
+    <div className={s._wrapper}>
+      <button onClick={exitHandler}>Выйти</button>
+
+      <h1>PersonalArea</h1>
+
+      <div>email:{user.email}</div>
+      <div>id:{user.id}</div>
+      <div>login:{user.login}</div>
+      <div>name:{user.name}</div>
+      <div>number:{user.number}</div>
+    </div>
+  );
+};
