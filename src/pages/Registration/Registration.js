@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { DataProvider } from "./DataContext";
 import { useForm } from "react-hook-form";
 import { PrimaryButton } from "../../UI/PrimaryButton";
-import s from "./Registration.module.scss";
 import { Form } from "../../UI/Form";
 import { Input } from "../../UI/Input";
 import { useHistory } from "react-router";
@@ -11,9 +10,10 @@ import * as yup from "yup";
 import { NavLink } from "react-router-dom";
 import { RegistartionAPI } from "../../api/api";
 import Checkbox from "@material-ui/core/Checkbox";
+import { MainContainer } from "../../UI/MainContainer";
 
 const schema = yup.object({
-  username: yup.string().required("login - обязательное поле"),
+  username: yup.string().required("username - обязательное поле"),
   login: yup
     .string()
     .required("login - обязательное поле")
@@ -35,7 +35,7 @@ const schema = yup.object({
 });
 
 export const Registration = () => {
-  const [checkbox, setCheckbox] = useState(false)
+  const [checkbox, setCheckbox] = useState(false);
 
   let history = useHistory();
 
@@ -73,81 +73,83 @@ export const Registration = () => {
 
   return (
     <DataProvider>
-      <div className={s._wrapper}>
-        <div className={s.formBlock}>
-          <h2>Регистрация</h2>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              {...register("username", { required: true })}
-              id="username"
-              type="username"
-              name="username"
-              placeholder="username"
-              autoComplete="on"
-              error={!!errors.username}
-            />
-            <p className={s.errorText}>{errors?.username?.message}</p>
+      <MainContainer>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <h2 className="login_title">Регистрация</h2>
+          <Input
+            {...register("username", { required: true })}
+            id="username"
+            type="username"
+            name="username"
+            placeholder="username"
+            autoComplete="on"
+            error={!!errors.username}
+          />
+          <p className="errorText">{errors?.username?.message}</p>
 
-            <Input
-              {...register("login")}
-              id="login"
-              type="text"
-              placeholder="login"
-              name="login"
-              autoComplete="on"
-              error={!!errors.login}
-            />
-            <p className={s.errorText}>{errors?.login?.message}</p>
+          <Input
+            {...register("login")}
+            id="login"
+            type="text"
+            placeholder="login"
+            name="login"
+            autoComplete="on"
+            error={!!errors.login}
+          />
+          <p className="errorText">{errors?.login?.message}</p>
 
-            <Input
-              {...register("password", { required: true })}
-              id="password"
-              type="password"
-              name="password"
-              placeholder="password"
-              autoComplete="on"
-              error={!!errors.password}
-            />
-            <p className={s.errorText}>{errors?.password?.message}</p>
+          <Input
+            {...register("password", { required: true })}
+            id="password"
+            type="password"
+            name="password"
+            placeholder="password"
+            autoComplete="on"
+            error={!!errors.password}
+          />
+          <p className="errorText">{errors?.password?.message}</p>
 
-            <Input
-              {...register("number")}
-              id="number"
-              type="tel"
-              placeholder="number"
-              name="number"
-              autoComplete="on"
-              error={!!errors.number}
-            />
-            <p className={s.errorText}>{errors?.number?.message}</p>
+          <Input
+            {...register("number")}
+            id="number"
+            type="tel"
+            placeholder="number"
+            name="number"
+            autoComplete="on"
+            error={!!errors.number}
+          />
+          <p className="errorText">{errors?.number?.message}</p>
 
-            <Input
-              {...register("email")}
-              id="email"
-              type="text"
-              name="email"
-              placeholder="email"
-              autoComplete="on"
-              error={!!errors.email}
-            />
-            <p className={s.errorText}>{errors?.email?.message}</p>
+          <Input
+            {...register("email")}
+            id="email"
+            type="text"
+            name="email"
+            placeholder="email"
+            autoComplete="on"
+            error={!!errors.email}
+          />
+          <p className="errorText">{errors?.email?.message}</p>
 
+          <div className="registartion-checkbox">
             <Checkbox
-              checked={checkbox} 
+              checked={checkbox}
               onChange={() => {
                 setCheckbox(!checkbox);
               }}
               inputProps={{ "aria-label": "primary checkbox" }}
-            />Согласны ли вы что-то там
-            <br/>
+            />
+            Согласны ли вы что-то там
+          </div>
 
-            <PrimaryButton disabled={!checkbox}>Отправить</PrimaryButton>
-            <NavLink className={s.routerLinkAuth} to="/login">
+          <PrimaryButton disabled={!checkbox}>Отправить</PrimaryButton>
+          <div className="routerLinkAuth">
+            <NavLink className="routerLinkAuth-text" to="/login">
               Вход
             </NavLink>
-          </Form>
-        </div>
-      </div>
+          </div>
+        </Form>
+      </MainContainer>
     </DataProvider>
   );
 };

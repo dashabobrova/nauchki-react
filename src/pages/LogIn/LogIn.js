@@ -5,7 +5,6 @@ import { Form } from "../../UI/Form";
 import { MainContainer } from "../../UI/MainContainer";
 import { PrimaryButton } from "../../UI/PrimaryButton";
 import { LogDataProvider } from "./DataContextLog";
-import s from "./LogIn.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { NavLink } from "react-router-dom";
@@ -61,7 +60,7 @@ export const LogIn = () => {
     <LogDataProvider>
       <MainContainer>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h1>Вход</h1>
+          <h1 className="login_title">Вход</h1>
           <Input
             {...register("login")}
             id="login"
@@ -71,7 +70,7 @@ export const LogIn = () => {
             autoComplete="on"
             error={!!errors.login}
           />
-          <p className={s.errorText}>{errors?.login?.message}</p>
+          <p className="errorText">{errors?.login?.message}</p>
           <Input
             {...register("password")}
             id="password"
@@ -81,12 +80,12 @@ export const LogIn = () => {
             autoComplete="on"
             error={!!errors.password}
           />
-          <p className={s.errorText}>{errors?.password?.message}</p>
+          <p className="errorText">{errors?.password?.message}</p>
 
-          <PrimaryButton>Отправить</PrimaryButton>
-          <NavLink className={s.routerLinkAuth} to="/registration">
-            Регистарция
-          </NavLink>
+          <PrimaryButton>Войти</PrimaryButton>
+          <div className="routerLinkAuth">
+            <NavLink className="routerLinkAuth-text" to="/registration">Регистарция</NavLink>
+          </div>
         </Form>
       </MainContainer>
     </LogDataProvider>

@@ -4,21 +4,19 @@ import { withStyles } from "@material-ui/core";
 
 const CssTextField = withStyles({
   root: {
-    "& label.Mui-focused": {
-      marginTop: "-10px",
-      color: "#0EAC99",
-    },
     "& .MuiOutlinedInput-root": {
+      backgroundColor: 'white',
+      borderRadius: "40px",
       "& fieldset": {
         borderRadius: "40px",
-        border: "1px solid black",
+        border: "3px solid #9A9A9A",
         color: "black",
       },
       "&.Mui-focused fieldset": {
-        border: "2px solid #0EAC99",
+        border: "3px solid #D7D7D7"
       },
       "&.Mui-error fieldset": {
-        borderColor: "red",
+        border: "3px solid #C64F4F",
       },
     },
   },
