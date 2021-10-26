@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-import s from "./Adminka.module.scss";
 import { useSelector } from "react-redux";
 import { getPostsAC } from "../../store/postsReducer";
 import { useDispatch } from "react-redux";
@@ -43,7 +42,7 @@ export const Adminka = () => {
   };
 
   return (
-    <div className={s._wrapper + " " + s.area}>
+    <div className="_wrapper area">
       <h1>Админка</h1>
       <form
         onSubmit={(e) => {

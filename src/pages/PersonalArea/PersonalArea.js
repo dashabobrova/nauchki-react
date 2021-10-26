@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import s from "./PersonalArea.module.scss";
 import { useDispatch } from "react-redux";
 import { toggleAuthAC } from "../../store/userReducer";
 import { useHistory } from "react-router";
@@ -38,7 +37,7 @@ export const PersonalArea = () => {
   };
 
   return (
-    <div className={s._wrapper}>
+    <div className="_wrapper">
       <button onClick={exitHandler}>Выйти</button>
       <h2>О пользователе</h2>
       <div>email:{user.email}</div>
@@ -73,7 +72,7 @@ export const PersonalArea = () => {
       {!visibleForm && (
         <button
           onClick={() => setVisibleForm(!visibleForm)}
-          className={s.circle + " " + s.plus}
+          className="circle plus"
         ></button>
       )}
     </div>

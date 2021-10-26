@@ -6,10 +6,8 @@ import { LogIn } from "./pages/LogIn/LogIn";
 import { PersonalArea } from "./pages/PersonalArea/PersonalArea";
 import { Adminka } from "./pages/Adminka/Adminka";
 import { PrivateRoute } from "./PrivateRoute";
-import { useSelector } from "react-redux";
 
 export const Router = () => {
-  /* const isAuth = useSelector((state) => state.user.isAuth); */
   return (
     <>
       <Route path="/registration" component={Registration} />
