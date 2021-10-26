@@ -8,7 +8,7 @@ export const Posts = (props) => {
           <div>#{post.tag}</div>
           <div>{post.text}</div>
           <img
-            src={`https://nauchki.herokuapp.com/${post.img}`}
+            src={post.img}
             alt="Картинка"
           />
         </li>

@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import TextField from "@material-ui/core/TextField";
-import { styled } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/core";
 
 const CssTextField = withStyles({

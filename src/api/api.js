@@ -40,6 +40,6 @@ export const AdminAPI = {
        return instance.post(`/post`, data)
    },
    getPosts(){
-    return instance.post(`/posts`, { tag: "test" })
+    return instance.post(`/posts`, { tag: "first" })
    }
   };

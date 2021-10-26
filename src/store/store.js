@@ -4,6 +4,7 @@ import { postsReducer } from "./postsReducer";
 import { userReducer } from "./userReducer";
 import storage from 'redux-persist/lib/storage'; // localStorage
 import { persistStore, persistReducer } from 'redux-persist';
+import { childrenReducer } from "./childrenReducer";
 
 // создаем объект конфигурации для persist
 const persistConfig = {
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
-  posts: postsReducer
+  posts: postsReducer,
+  children: childrenReducer
 });
 
 // оборачиваем редьюсеры в persist

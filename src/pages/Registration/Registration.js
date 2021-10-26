@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { DataProvider } from "./DataContext";
 import { useForm } from "react-hook-form";
 import { PrimaryButton } from "../../UI/PrimaryButton";
@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { NavLink } from "react-router-dom";
 import { RegistartionAPI } from "../../api/api";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const schema = yup.object({
   username: yup.string().required("login - обязательное поле"),
@@ -34,6 +35,8 @@ const schema = yup.object({
 });
 
 export const Registration = () => {
+  const [checkbox, setCheckbox] = useState(false)
+
   let history = useHistory();
 
   const {
@@ -78,7 +81,6 @@ export const Registration = () => {
               {...register("username", { required: true })}
               id="username"
               type="username"
-              /* label="password"  */
               name="username"
               placeholder="username"
               autoComplete="on"
@@ -90,7 +92,6 @@ export const Registration = () => {
               {...register("login")}
               id="login"
               type="text"
-              /* label="login"  */
               placeholder="login"
               name="login"
               autoComplete="on"
@@ -102,7 +103,6 @@ export const Registration = () => {
               {...register("password", { required: true })}
               id="password"
               type="password"
-              /* label="password"  */
               name="password"
               placeholder="password"
               autoComplete="on"
@@ -114,7 +114,6 @@ export const Registration = () => {
               {...register("number")}
               id="number"
               type="tel"
-              /* label="number" */
               placeholder="number"
               name="number"
               autoComplete="on"
@@ -126,14 +125,23 @@ export const Registration = () => {
               {...register("email")}
               id="email"
               type="text"
-              /* label="email" */
               name="email"
               placeholder="email"
               autoComplete="on"
               error={!!errors.email}
             />
             <p className={s.errorText}>{errors?.email?.message}</p>
-            <PrimaryButton>Отправить</PrimaryButton>
+
+            <Checkbox
+              checked={checkbox} 
+              onChange={() => {
+                setCheckbox(!checkbox);
+              }}
+              inputProps={{ "aria-label": "primary checkbox" }}
+            />Согласны ли вы что-то там
+            <br/>
+
+            <PrimaryButton disabled={!checkbox}>Отправить</PrimaryButton>
             <NavLink className={s.routerLinkAuth} to="/login">
               Вход
             </NavLink>
