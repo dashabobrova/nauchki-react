@@ -18,6 +18,9 @@ export const AddChildrenForm = ({ userId, visibleForm, setVisibleForm }) => {
       });
   };
 
+  const onChangeValue = (event) => {
+    setGender(event.target.value);
+  }
   return (
     <form
       onSubmit={(e) => {
@@ -28,7 +31,11 @@ export const AddChildrenForm = ({ userId, visibleForm, setVisibleForm }) => {
       <br />
       <input placeholder="name" onChange={(e) => setName(e.target.value)} />
       <br />
-      <input placeholder="gender" onChange={(e) => setGender(e.target.value)} />
+      {/* <input placeholder="gender" onChange={(e) => setGender(e.target.value)} /> */}
+      <div onChange={onChangeValue}>
+        <input type="radio" value="Муж" name="gender" /> Муж
+        <input type="radio" value="Жен" name="gender" /> Жен
+      </div>
       <br />
       <input
         placeholder="01.01.2021"
