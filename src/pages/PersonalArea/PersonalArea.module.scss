@@ -1,3 +1,39 @@
 ._wrapper{
     max-width: 1440px;
 }
+
+.circle{
+    border: 1px solid #aaa;
+    box-shadow: inset 1px 1px 3px #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    background: #aaaaaa4f;
+}
+.circle:hover{
+    background: #6363634f;
+}
+.circle:active{
+    background: radial-gradient(#aaa, #fff);
+}
+.circle:before,
+.circle:after{
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+}
+/* PLUS */
+.circle.plus:before,
+.circle.plus:after {
+    background:black;
+}
+.circle.plus:before{
+    width: 2px;
+    margin: 3px auto;
+}
+.circle.plus:after{
+    margin: auto 3px;
+    height: 2px;
+}
