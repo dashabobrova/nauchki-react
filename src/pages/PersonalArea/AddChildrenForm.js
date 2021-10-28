@@ -1,11 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { DateOfBirthInput } from "../../UI/DateOfBirthInput";
+import { PlussBtn } from "../../UI/PlussBtn";
 
-export const AddChildrenForm = ({ userId, visibleForm, setVisibleForm }) => {
+export const AddChildrenForm = ({
+  userId,
+  visibleForm,
+  setVisibleForm,
+  getUserChildren,
+}) => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  
+  const [dateOfBirth, setDateOfBirth] = useState(null);
+
   const addUserChildren = () => {
     axios
       .post(
@@ -15,36 +22,53 @@ export const AddChildrenForm = ({ userId, visibleForm, setVisibleForm }) => {
       )
       .then((res) => {
         console.log(res);
+        getUserChildren();
+        setVisibleForm(false);
       });
   };
 
   const onChangeValue = (event) => {
     setGender(event.target.value);
-  }
+  };
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
-      <button onClick={() => setVisibleForm(!visibleForm)}>x</button>
-      <br />
-      <input placeholder="name" onChange={(e) => setName(e.target.value)} />
-      <br />
-      {/* <input placeholder="gender" onChange={(e) => setGender(e.target.value)} /> */}
-      <div onChange={onChangeValue}>
-        <input type="radio" value="Муж" name="gender" /> Муж
-        <input type="radio" value="Жен" name="gender" /> Жен
+    <div className="personalArea-form">
+      <div className="circle-crossbtn">
+        <PlussBtn onClick={() => setVisibleForm(!visibleForm)}
+          className="circleCross "/>
       </div>
-      <br />
-      <input
-        placeholder="01.01.2021"
-        onChange={(e) => setDateOfBirth(e.target.value)}
-      />
-      <br />
-      <button onClick={addUserChildren} type="submit">
-        Добавить ребенка
-      </button>
-    </form>
+      <h1 className="personalArea-form__title">
+        Добавить ребенка в личный кабинет
+      </h1>
+
+      <div className="personalArea-form__main">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <p className='personalArea-form__ptitle'>Имя ребенка</p>
+
+          <input className='personalArea-form__name' placeholder="name" onChange={(e) => setName(e.target.value)} />
+          <br />
+          <div className='personalArea-form__radio' onChange={onChangeValue}>
+            <input type="radio" value="Муж" name="gender" />муж.
+            <input type="radio" value="Жен" name="gender" /> жен.
+          </div>
+          <br />
+          <p className='personalArea-form__ptitle'>Дата рождения</p>
+
+          <DateOfBirthInput 
+            
+            dateOfBirth={dateOfBirth}
+            setDateOfBirth={setDateOfBirth}
+            value=''
+          />
+
+          <button className='personalArea-form__btn' onClick={addUserChildren} type="submit">
+            Добавить
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };

@@ -28,17 +28,17 @@ export const Header = () => {
         </div>
         <div>
           <ul className="header__iconsmenu">
-            <li className="header__iconsmenu-item">
-              <NavLink to="/registration" className="header__iconsmenu-btn">
-                Регистрация
+            <li className="header__iconsmenu-btn">
+              <NavLink to="/" >
+                Статьи
               </NavLink>
             </li>
-            <li className="header__iconsmenu-item">
+            <li>
               <NavLink to="/adminka">
                 <AiOutlineHome className="icon-size" />
               </NavLink>
             </li>
-            <li className="header__iconsmenu-item">
+            <li>
               <NavLink to="/personalArea">
                 <FaRegUserCircle className="icon-size" />
               </NavLink>
