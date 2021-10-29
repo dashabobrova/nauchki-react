@@ -1,8 +1,4 @@
 import React, { useCallback, useState } from "react";
-import { useSelector } from "react-redux";
-import { getPostsAC } from "../../store/postsReducer";
-import { useDispatch } from "react-redux";
-import { Posts } from "./Posts";
 import { AdminAPI } from "../../api/api";
 
 export const Adminka = () => {
@@ -10,12 +6,7 @@ export const Adminka = () => {
   const [tag, setTag] = useState("");
   const [img, setImg] = useState(null);
 
-  const posts = useSelector((state) => state.posts.posts);
-  const dispatch = useDispatch();
 
-  const getPostsData = (userData) => {
-    dispatch(getPostsAC(userData));
-  };
 
   const sendFile = useCallback(async () => {
     try {
@@ -30,16 +21,7 @@ export const Adminka = () => {
     }
   }, [text, tag, img]);
 
-  const getPosts = () => {
-    try {
-      AdminAPI.getPosts().then((res) => {
-        getPostsData(res.data);
-        console.log(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+ 
 
   return (
     <div className="_wrapper area">
@@ -67,11 +49,7 @@ export const Adminka = () => {
       </form>
 
       <br />
-      {/* Отображение постов - пока на странице админки */}
-      <div>
-        <button onClick={getPosts}>Получить посты</button>
-        <Posts posts={posts} />
-      </div>
+      
     </div>
   );
 };

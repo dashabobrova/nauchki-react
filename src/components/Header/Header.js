@@ -29,7 +29,7 @@ export const Header = () => {
         <div>
           <ul className="header__iconsmenu">
             <li className="header__iconsmenu-btn">
-              <NavLink to="/" >
+              <NavLink to="/articles" >
                 Статьи
               </NavLink>
             </li>

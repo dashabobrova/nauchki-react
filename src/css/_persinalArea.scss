@@ -1,7 +1,3 @@
-._wrapper {
-  max-width: 1440px;
-}
-
 .personalArea_container {
   width: 1014px;
   margin-top: 147px;
@@ -32,7 +28,6 @@
   list-style-type: none;
 }
 
-
 .personalArea__title {
   font-size: 35px;
   font-style: normal;
@@ -49,7 +44,6 @@
   }
 }
 
-
 /* Форма */
 .personalArea-form {
   width: 798px;
@@ -64,7 +58,6 @@
   float: right;
   padding-top: 42px;
   padding-right: 31px;
-  z-index: 1;
 }
 
 .personalArea-form__title {
@@ -187,39 +180,35 @@ input[type="radio"]:checked:after {
 .personalArea_addedChildren-children {
   width: 393px;
   height: 236px;
-  border: 3px solid #C4C4C4;
+  border: 3px solid #c4c4c4;
   border-radius: 40px;
   margin-top: 20px;
 }
 
-.childPlaceholder{
+.childPlaceholder {
   border-radius: 100%;
   border: none;
-  
   height: 171px;
-width: 171px;
-
-
+  width: 171px;
 }
 
-.personalArea_addedChildren-info{
+.personalArea_addedChildren-info {
   width: 150px;
   height: 100%;
   float: right;
 }
 
-.personalArea_addedChildren-wrapper{
+.personalArea_addedChildren-wrapper {
   padding-top: 27px;
   padding-left: 25px;
   padding-right: 25px;
 }
 
-.personalArea_addedChildren-name{
+.personalArea_addedChildren-name {
   font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 24px;
-
-color: #FFFFFF;
-padding-top: 27px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+  padding-top: 27px;
 }

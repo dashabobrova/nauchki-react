@@ -8,10 +8,8 @@ import { LogDataProvider } from "./DataContextLog";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import { toggleAuthAC, getUserDataAC } from "../../store/userReducer";
-import { LoginAPI, UserAPI } from "../../api/api";
+import { asyncApiCall } from "../../asyncActions/getAuthUserThunk";
 
 const schema = yup.object({
   login: yup.string().required(),
@@ -19,15 +17,8 @@ const schema = yup.object({
 });
 
 export const LogIn = () => {
-  let history = useHistory();
-
   const dispatch = useDispatch();
-
-  const getUser = (userData) => {
-    dispatch(getUserDataAC(userData));
-    dispatch(toggleAuthAC(true));
-  };
-
+  
   const {
     register,
     formState: { errors },
@@ -37,23 +28,8 @@ export const LogIn = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data) => {
-    await LoginAPI.auth(data.login, data.password);
-
-    await UserAPI.getAuthUser(data.login, data.password)
-      .then((res) => {
-        getUser(res.data);
-        history.push("/personalArea");
-      })
-      .catch((err) => {
-        if (err.response) {
-          alert("client received an error response (5xx, 4xx)"); // обработать для UI
-        } else if (err.request) {
-          alert("client never received a response, or request never left"); // обработать для UI
-        } else {
-          alert("anything else"); // обработать для UI
-        }
-      });
+  const onSubmit = (data) => {
+    dispatch(asyncApiCall(data.login, data.password));
   };
 
   return (
@@ -84,7 +60,9 @@ export const LogIn = () => {
 
           <PrimaryButton>Войти</PrimaryButton>
           <div className="routerLinkAuth">
-            <NavLink className="routerLinkAuth-text" to="/registration">Регистарция</NavLink>
+            <NavLink className="routerLinkAuth-text" to="/registration">
+              Регистарция
+            </NavLink>
           </div>
         </Form>
       </MainContainer>

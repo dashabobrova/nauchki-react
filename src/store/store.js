@@ -1,10 +1,11 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux";
 import {compose} from 'redux';
 import { postsReducer } from "./postsReducer";
 import { userReducer } from "./userReducer";
 import storage from 'redux-persist/lib/storage'; // localStorage
 import { persistStore, persistReducer } from 'redux-persist';
 import { childrenReducer } from "./childrenReducer";
+import thunk from "redux-thunk";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,7 +26,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
-    persistedReducer, composeEnhancers()
+    persistedReducer, composeEnhancers(applyMiddleware(thunk))
 );
 
 // создаем persistor
