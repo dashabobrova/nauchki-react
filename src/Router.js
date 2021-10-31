@@ -13,6 +13,7 @@ export const Router = () => {
     <>
       <Route path="/registration" component={Registration} />
       <Route path="/login" component={LogIn} />
+
       <Route path="/articles" component={Articles} />
 
       <PrivateRoute path="/personalArea" component={PersonalArea} />

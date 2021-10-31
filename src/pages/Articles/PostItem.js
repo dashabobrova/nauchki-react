@@ -1,7 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export const PostItem = ({ post }) => {
   return (
+    <NavLink to={`/articles/${post.id}`}>
     <div>
       <div className="post__card ">
         {/* <p>#{post.tag}</p>
@@ -12,8 +14,6 @@ export const PostItem = ({ post }) => {
       </div>
       <p className="post__card-title">Название</p> {/* на серваке пока нет */}
     </div>
+    </NavLink> 
   );
 };
-
-/* Картинку обернуть в ссылку, в которой id будет post.id???? 
--эта фильтрация делается в редаксе - в результате отрисовывается то компонент, с которым совпало d(см в ГБ)*/
