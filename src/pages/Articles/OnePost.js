@@ -50,4 +50,10 @@ const OnePostWithoutRouter = (props) => {
 };
 
 export const OnePost = withRouter(OnePostWithoutRouter);
-/* withRouter помещает в props history, lovation, map; в math содержатся params, в котрые мы поместили id из урла (см Router)*/
+/* 
+  withRouter помещает в props history, location, match; 
+  в math содержатся params, в котрые мы поместили id из урла (см Articles). 
+
+  !!! пост оборачивается в NavLink в PostItem, ссылка попадет в url по клику, 
+      затем Route в Arcticles следит за изменениями url и перерисовывает
+*/

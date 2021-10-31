@@ -37,7 +37,7 @@ export const Articles = () => {
                 path="/articles"
                 render={() => <PostsCardsArea posts={posts} />}
               />
-              <Route path="/articles/:id" render={(props) => <OnePost {...props} />} />
+              <Route exact path="/articles/:id" render={(props) => <OnePost {...props} />} />
             </Switch>
           </div>
         </div>
