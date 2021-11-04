@@ -1,15 +1,16 @@
-import { AdminAPI } from "../api/api";
+import { PostsAPI } from "../api/api";
 import { getPostsAC } from "../store/postsReducer";
 
-export const getPostThunk = () => {
+export const getPostThunk = (tag) => {
   return async (dispatch) => {
     try {
-      AdminAPI.getPosts().then((res) => {
+      PostsAPI.getPosts(tag).then((res) => {
         dispatch(getPostsAC(res.data));
-        console.log(res.data);
+        console.log(res.data)
       });
     } catch (error) {
       console.log(error);
     }
   };
 };
+

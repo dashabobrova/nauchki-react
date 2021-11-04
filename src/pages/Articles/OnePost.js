@@ -14,8 +14,6 @@ const OnePostWithoutRouter = (props) => {
     history.push("/articles");
   };
 
-  console.log(posts)
-
   return (
     <div className="onePost-wrapper">
       {filteredPosts.map((post) => (

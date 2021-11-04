@@ -36,10 +36,17 @@ export const RegistartionAPI = {
 };
 
 export const AdminAPI = {
-   addPost(data){
-       return instance.post(`/post`, data)
-   },
-   getPosts(){
-    return instance.post(`/posts`, { tag: "first" })
-   }
-  };
+  addPost(data) {
+    return instance.post(`/post`, data);
+  },
+  
+};
+
+export const PostsAPI = {
+  getPosts(tag) {
+    return instance.get(`/posts${tag !== null ? `/${tag}` : ''}`);
+  },
+  getTags() {
+    return instance.get(`/tags`);
+  }
+};

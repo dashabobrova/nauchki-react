@@ -149,3 +149,19 @@
   font-weight: 400;
   line-height: 19px;
 }
+
+.themes__taggsList {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  margin-top: 38px;
+  text-transform: capitalize;
+}
+
+.themes__taggsList li:not(:first-child) {
+  margin-top: 45px;
+}

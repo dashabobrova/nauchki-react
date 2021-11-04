@@ -7,6 +7,7 @@ import { PersonalArea } from "./pages/PersonalArea/PersonalArea";
 import { Adminka } from "./pages/Adminka/Adminka";
 import { PrivateRoute } from "./PrivateRoute";
 import { Articles } from "./pages/Articles/Articles";
+import { Themes } from "./pages/Articles/Themes";
 
 export const Router = () => {
   return (
