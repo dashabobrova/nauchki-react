@@ -44,7 +44,7 @@ export const AdminAPI = {
 
 export const PostsAPI = {
   getPosts(tag) {
-    return instance.get(`/posts${tag !== null ? `/${tag}` : ''}`);
+    return instance.get(`/posts${tag !== undefined ? `/${tag}` : ''}`);
   },
   getTags() {
     return instance.get(`/tags`);
