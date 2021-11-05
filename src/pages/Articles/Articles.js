@@ -12,15 +12,23 @@ import { isLoadingAC } from "../../store/postsReducer";
 export const Articles = () => {
   const dispatch = useDispatch();
   const [currentTag, setCurrentTag] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getPostThunk());
-    dispatch(getTagsThunk());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    (async () => {
+      setIsLoading(true);
+      await dispatch(getPostThunk());
+      await dispatch(getTagsThunk());
+      setIsLoading(false);
+    })();
   }, []);
 
   useEffect(() => {
-    dispatch(getPostThunk(currentTag.tag));
+    (async () => {
+      setIsLoading(true);
+      await dispatch(getPostThunk(currentTag.tag));
+      setIsLoading(false);
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTag]);
 
@@ -29,7 +37,7 @@ export const Articles = () => {
   return (
     <div className="articles">
       <div className="acticles__container">
-        <Themes currentTag={currentTag} setCurrentTag={setCurrentTag} />
+        <Themes currentTag={currentTag} setCurrentTag={setCurrentTag} isLoading={isLoading}/>
         <div>
           <h1 className="articles__title">Интересные статьи</h1>
           <input
@@ -42,7 +50,7 @@ export const Articles = () => {
                 exact
                 path="/articles"
                 render={() => (
-                  <PostsCardsArea posts={posts} />
+                  <PostsCardsArea posts={posts} isLoading={isLoading} />
                 )}
               />
               <Route

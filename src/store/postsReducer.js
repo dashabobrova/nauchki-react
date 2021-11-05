@@ -3,7 +3,7 @@ export const GET_TAGS = "GET_TAGS";
 
 const initialState = {
   posts: [],
-  tags: [],
+  tags: []
 };
 
 export const postsReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ export const postsReducer = (state = initialState, action) => {
     case GET_POSTS:
       return {
         ...state,
-        posts: action.payload,
+        posts: action.payload
       };
     case GET_TAGS:
       return {
