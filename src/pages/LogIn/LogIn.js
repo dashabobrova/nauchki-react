@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { asyncApiCall } from "../../asyncActions/getAuthUserThunk";
-import { LoaderSvg } from "../../img/LoaderSvg";
+import { LoaderSvg } from "../../UI/LoaderSvg";
 
 
 const schema = yup.object({

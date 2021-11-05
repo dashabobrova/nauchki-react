@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 import { RegistartionAPI } from "../../api/api";
 import Checkbox from "@material-ui/core/Checkbox";
 import { MainContainer } from "../../UI/MainContainer";
-import { LoaderSvg } from "../../img/LoaderSvg";
+import { LoaderSvg } from "../../UI/LoaderSvg";
 
 const schema = yup.object({
   username: yup.string().required("username - обязательное поле"),
