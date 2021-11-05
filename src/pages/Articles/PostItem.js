@@ -12,7 +12,7 @@ export const PostItem = ({ post }) => {
           <img className="post__card-img" src={post.img} alt="Картинка" />
         )}
       </div>
-      <p className="post__card-title">Название</p> {/* на серваке пока нет */}
+      <p className="post__card-title">{post.title ? post.title : 'Нет названия'}</p> 
     </div>
     </NavLink> 
   );

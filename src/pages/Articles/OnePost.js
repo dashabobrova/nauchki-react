@@ -16,7 +16,7 @@ const OnePostWithoutRouter = (props) => {
 
   return (
     <div className="onePost-wrapper">
-      {filteredPosts.map((post) => (
+      {filteredPosts && filteredPosts.map((post) => (
         <div key={post.id}>
           <button className="onePost-arrowBtn" onClick={handleBack}>
             <svg
@@ -32,8 +32,8 @@ const OnePostWithoutRouter = (props) => {
               />
             </svg>
           </button>
-          <h1 className="onePost-title">Название</h1>{" "}
-          {/* на серваке пока нет */}
+          <h1 className="onePost-title">{filteredPosts.title !== null ? post.title : 'Нет названия'}</h1>
+
           <div className="onePost-imgWrapper">
             <img className="onePost-img" src={post.img} alt="Картинка" />
           </div>

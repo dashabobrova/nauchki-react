@@ -6,11 +6,9 @@ export const getPostThunk = (tag) => {
     try {
       PostsAPI.getPosts(tag).then((res) => {
         dispatch(getPostsAC(res.data));
-        console.log(res.data)
       });
     } catch (error) {
       console.log(error);
     }
   };
 };
-

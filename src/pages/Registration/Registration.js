@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import { RegistartionAPI } from "../../api/api";
 import Checkbox from "@material-ui/core/Checkbox";
 import { MainContainer } from "../../UI/MainContainer";
+import { LoaderSvg } from "../../img/LoaderSvg";
 
 const schema = yup.object({
   username: yup.string().required("username - обязательное поле"),
@@ -36,6 +37,7 @@ const schema = yup.object({
 
 export const Registration = () => {
   const [checkbox, setCheckbox] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let history = useHistory();
 
@@ -49,6 +51,7 @@ export const Registration = () => {
   });
 
   const onSubmit = (data) => {
+    setIsLoading(true);
     RegistartionAPI.registartion(
       data.email,
       data.login,
@@ -142,7 +145,7 @@ export const Registration = () => {
             Согласны ли вы что-то там
           </div>
 
-          <PrimaryButton disabled={!checkbox}>Отправить</PrimaryButton>
+          <PrimaryButton disabled={!checkbox}>{isLoading ? <LoaderSvg /> : <p>Отправить</p>}</PrimaryButton>
           <div className="routerLinkAuth">
             <NavLink className="routerLinkAuth-text" to="/login">
               Вход

@@ -18,6 +18,7 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         tags: action.payload,
       };
+
     default:
       return state;
   }

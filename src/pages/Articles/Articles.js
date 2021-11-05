@@ -7,10 +7,11 @@ import { Route, Switch } from "react-router-dom";
 import { OnePost } from "./OnePost";
 import { getTagsThunk } from "../../asyncActions/getTagsThunk";
 import { Themes } from "./Themes";
+import { isLoadingAC } from "../../store/postsReducer";
 
 export const Articles = () => {
   const dispatch = useDispatch();
-  const [currentTag, setCurrentTag] = useState('');
+  const [currentTag, setCurrentTag] = useState("");
 
   useEffect(() => {
     dispatch(getPostThunk());
@@ -28,7 +29,7 @@ export const Articles = () => {
   return (
     <div className="articles">
       <div className="acticles__container">
-        <Themes currentTag={currentTag} setCurrentTag={setCurrentTag}/>
+        <Themes currentTag={currentTag} setCurrentTag={setCurrentTag} />
         <div>
           <h1 className="articles__title">Интересные статьи</h1>
           <input
@@ -40,14 +41,15 @@ export const Articles = () => {
               <Route
                 exact
                 path="/articles"
-                render={() => <PostsCardsArea posts={posts} />}
+                render={() => (
+                  <PostsCardsArea posts={posts} />
+                )}
               />
               <Route
                 exact
                 path="/articles/:id"
                 render={(props) => <OnePost {...props} />}
               />
-
             </Switch>
           </div>
         </div>

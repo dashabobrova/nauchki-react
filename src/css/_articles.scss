@@ -1,7 +1,7 @@
 .acticles__container {
   display: grid;
   grid-template-columns: 183px 946px;
-  grid-column-gap: 42px;
+  grid-column-gap: 43px;
 }
 
 .articles__title {
@@ -41,8 +41,8 @@
   position: relative;
   width: 705px;
   display: grid;
-  grid-template-columns: 310px 310px;
-  grid-column-gap: 42px;
+  grid-template-columns: 313px 313px;
+  grid-column-gap: 85px;
   grid-row-gap: 92px;
   padding-top: 94px;
   padding-bottom: 64px;
@@ -54,13 +54,13 @@
   border-radius: 20px;
   background: #c4c4c4;
 }
+//TODO: скачет верстка. Думаю, связано с тем, что картинки не приходят
 
 .post__card-title {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-
   color: #000000;
   text-align: center;
   padding-top: 13px;
@@ -162,6 +162,6 @@
   text-transform: capitalize;
 }
 
-.themes__taggsList li:not(:first-child) {
+.themes__taggsList li {
   margin-top: 45px;
 }

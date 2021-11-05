@@ -75,7 +75,7 @@ export const PersonalArea = () => {
           </h1>
 
           <ul className="personalArea__children-container ">
-            {children.map((child) => (
+            {children && children.map((child) => (
               <ChildCard key={child.id} child={child}/>
             ))}
           </ul>
