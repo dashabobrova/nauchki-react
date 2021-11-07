@@ -1,8 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import childPlaceholder from '../../img/childCardPlaceholder.jpg';
 
 export const ChildCard = ({ child }) => {
   return (
+    <NavLink to={`/personalArea/${child.id}`}>
     <li>
       <div className="personalArea_addedChildren-children">
           <div className='personalArea_addedChildren-wrapper'>
@@ -14,5 +16,6 @@ export const ChildCard = ({ child }) => {
         </div>
       </div>
     </li>
+    </NavLink>
   );
 };

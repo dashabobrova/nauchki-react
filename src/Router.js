@@ -8,6 +8,7 @@ import { Adminka } from "./pages/Adminka/Adminka";
 import { PrivateRoute } from "./PrivateRoute";
 import { Articles } from "./pages/Articles/Articles";
 import { Themes } from "./pages/Articles/Themes";
+import { OneChildren } from "./pages/PersonalArea/OneChildren";
 
 export const Router = () => {
   return (
@@ -17,7 +18,9 @@ export const Router = () => {
 
       <Route path="/articles" component={Articles} />
 
-      <PrivateRoute path="/personalArea" component={PersonalArea} />
+      <PrivateRoute exact path="/personalArea" component={PersonalArea} />
+      <PrivateRoute exact path="/personalArea/:id" component={OneChildren} />
+
       <PrivateRoute path="/adminka" component={Adminka} />
 
       <Route exact path="/" component={Main} />

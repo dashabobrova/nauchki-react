@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toggleAuthAC } from "../../store/userReducer";
-import { useHistory } from "react-router";
+import { Route, useHistory } from "react-router";
 import axios from "axios";
 import { AddChildrenForm } from "./AddChildrenForm";
 import { getChildrenAC } from "../../store/childrenReducer";
-import { ChildCard } from "../../components/ChildCard/ChildCart";
+import { ChildCard } from "./ChildCart";
 
 export const PersonalArea = () => {
   const user = useSelector((state) => state.user.userData);
@@ -22,6 +22,8 @@ export const PersonalArea = () => {
     history.push("/");
   };
 
+
+  // TODO: Перенести в санки получение детей
   const getChildrenData = (userData) => {
     dispatch(getChildrenAC(userData));
   };
@@ -32,8 +34,6 @@ export const PersonalArea = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
-        console.log(children);
         getChildrenData(res.data);
       });
   };
@@ -79,6 +79,12 @@ export const PersonalArea = () => {
               <ChildCard key={child.id} child={child}/>
             ))}
           </ul>
+
+          {/* <Route
+                exact
+                path="/personalArea/:id"
+                render={(props) => <ChildCard {...props} />}
+              /> */}
         </div>
       </div>
       <br />
