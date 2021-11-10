@@ -9,11 +9,11 @@ import thunk from "redux-thunk";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-/* // создаем объект конфигурации для persist
+// создаем объект конфигурации для persist
 const persistConfig = {
   key: 'root',
   storage,
-} */
+}
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -23,8 +23,11 @@ const rootReducer = combineReducers({
 
 
 // оборачиваем редьюсеры в persist
-/* const persistedReducer = persistReducer(persistConfig, rootReducer); */
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
-  rootReducer, composeEnhancers(applyMiddleware(thunk))
+  persistedReducer, composeEnhancers(applyMiddleware(thunk))
 );
+
+// создаем persistor
+export const persistor = persistStore(store);
